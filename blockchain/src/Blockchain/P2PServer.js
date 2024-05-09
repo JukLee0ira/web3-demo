@@ -144,7 +144,7 @@ class P2PServer {
         if (this.peers.has(`${host}:${port}`)) {
             console.debug(`Already connected to peer: ${host}:${port}`);
             return;
-        }
+        }//如果自己就是种子节点，不连接自己
         if (host === this.host && port === this.port) {
             console.debug(`Can not connect to self: ${host}:${port}`);
             return;
