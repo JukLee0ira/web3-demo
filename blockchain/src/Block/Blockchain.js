@@ -24,18 +24,25 @@ class Blockchain {
         this.height++;
     }
     // 验证区块链是否有效
-    isChainValid() {
+    isChainValid(){
         for (let i = 1; i < this.chain.length; i++) {
-            const currentBlock = this.chain[i];
-            const previousBlock = this.chain[i - 1];
-            if (currentBlock.hash !== currentBlock.calculateHash()) {
-                return false;
-            }
-            if (currentBlock.previousHash !== previousBlock.hash) {
-                return false;
-            }
+          const currentBlock = this.chain[i];
+          const previousBlock = this.chain[i - 1];
+    
+          if (currentBlock.hash !== currentBlock.calculateHash()) {
+          //当前区块链是否被改是否和摘要一致
+          //数据篡改：如果有人试图修改区块链中的某个区块的数据，这个函数会检测到不一致的哈希值。
+          //自己造了一个区块，
+            return false;
+          }
+    
+          if (currentBlock.previousHash !== previousBlock.hash) {
+          //当前区块链上的前hash值和前一个区块上的hash值是否一致，完整性
+          //如果有人试图伪造一个区块并将其插入到区块链中，这个函数也会检测到不一致的哈希值
+            return false;
+          }
         }
         return true;
+      }
     }
-}
 exports.Blockchain = Blockchain;
