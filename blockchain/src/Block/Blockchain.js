@@ -32,7 +32,7 @@ class Blockchain {
           if (currentBlock.hash !== currentBlock.calculateHash()) {
           //当前区块链是否被改是否和摘要一致
           //数据篡改：如果有人试图修改区块链中的某个区块的数据，这个函数会检测到不一致的哈希值。
-          //自己造了一个区块，
+          //自己造了一个区块，n
             return false;
           }
     
