@@ -31,6 +31,8 @@ const argv = yargs_1.default
     .help()
     .alias('help', 'h')
     .argv;
+
+    
 // 如果命令行参数提供了dataPath，使用它；否则使用默认值
 const blockchainDataPath = argv.dataPath || 'blockchain.json';
 const p2pPort = argv.port || 12315;
